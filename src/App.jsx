@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import WordHunterDisplay from './wordHunterDisplay.jsx'
 import React from 'react'
+import WordHunterDisplay from './components/wordHunterDisplay.jsx'
+import BackgroundComponent from './components/BackgroundComponent.jsx'
 
 function App() {
-
   return (
-    <WordHunterDisplay />
-
+    <div>
+      <BackgroundComponent/>
+      <WordHunterDisplay/>
+    </div>
   )
 }
 

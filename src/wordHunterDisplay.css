@@ -1,0 +1,16 @@
+.wordHunterGrid {
+    position: fixed;
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    width:25vw;
+
+}
+
+.wordHunterGrid input {
+    margin:4px;
+    height:10vh;
+    width:10vh;
+    font-size: 100px;
+}
+
+
