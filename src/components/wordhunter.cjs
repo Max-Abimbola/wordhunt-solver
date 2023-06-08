@@ -1,4 +1,15 @@
-const wordList = ['LARD', 'LIAR', 'LIE'];
+
+
+const fs = require('fs')
+
+const fileContent = fs.readFileSync('word-list.txt','utf-8')
+
+const lines = fileContent.split('\n')
+
+const values = lines.map((line)=>line.trim())
+
+console.log(values)
+
 
 const boardMatrix = [
   ['B', 'L', 'E', 'O'],
@@ -89,6 +100,12 @@ function wordInBoard(word) {
   return false;
 }
 
-wordList.forEach((word) => {
-  console.log(wordInBoard(word));
-});
+
+let presentWords = values.filter((word)=>wordInBoard(word) === true)
+
+
+x = ['ABACTINAL','ABAFT']
+
+y = x.filter((word)=>wordInBoard(word) === true)
+
+console.log(presentWords)
