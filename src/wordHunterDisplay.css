@@ -1,16 +1,83 @@
 .wordHunterGrid {
-    position: fixed;
     display:grid;
     grid-template-columns: repeat(1,1fr);
-    width:25vw;
+    background-color: #D4FCA2;
+    position: relative;
+    justify-items: center;
+    padding-top:10px;
+    padding-bottom: 10px;
+
 
 }
 
 .wordHunterGrid input {
-    margin:4px;
-    height:10vh;
-    width:10vh;
-    font-size: 100px;
+    margin:6px;
+    height:100px;
+    width:100px;
+    font-size: 5em;
+    box-sizing:border-box;
+    outline:none;
+    border:none;
+    border-radius: 10px;
+    background-color:#FDF0AA ;
+    text-align: center;
+    text-transform: uppercase;
+
+
 }
 
 
+
+.container {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(16,1fr);
+    gap:1px;
+    margin-left:100px;
+    
+
+
+}
+
+.word-hunter-grid-container {
+    height:50px;
+    width:450px;
+    grid-column-start:2;
+    grid-column-end:5;
+    grid-row-start:5;
+    margin-left:10px;
+
+}
+
+.found-words-container {
+    padding:10px;
+    width:305px;
+    position: relative;
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 5;
+    grid-row-end:15;
+    background-color: #D4FCA2;
+    justify-items: center;
+    margin-left:10px;
+
+}
+
+.generate-words-button-container{
+    position: relative;
+    grid-column-start: 2;
+    grid-row-start: 14;
+
+}
+
+.generate-words-button {
+    margin-top:2px;
+    outline:none;
+    margin-left:10px;
+    width:450px;
+    height:50px;
+    background-color: #D4FCA2;
+    border:none;
+    font-size: 2em;
+
+}

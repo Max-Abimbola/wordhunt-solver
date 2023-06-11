@@ -4,6 +4,7 @@ const fs = require('fs')
 
 const fileContent = fs.readFileSync('word-list.txt','utf-8')
 
+
 const lines = fileContent.split('\n')
 
 const values = lines.map((line)=>line.trim())
@@ -12,10 +13,10 @@ console.log(values)
 
 
 const boardMatrix = [
-  ['B', 'L', 'E', 'O'],
-  ['G', 'I', 'H', 'N'],
-  ['T', 'S', 'I', 'C'],
-  ['G', 'R', 'E', 'E']
+  ['A', 'K', 'N', 'M'],
+  ['S', 'P', 'T', 'G'],
+  ['I', 'N', 'W', 'S'],
+  ['O', 'T', 'D', 'A']
 ];
 
 function utilGetNeighbours(boardMatrix, row, col) {

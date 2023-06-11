@@ -1,0 +1,12 @@
+
+.word-list {
+    position:absolute;
+    background-color: #FDF0AA;
+    outline:none;
+    border:none;
+    width:300px;
+    height:506px;
+    resize:none;
+
+    
+}
