@@ -44,7 +44,7 @@ function WordHunterDisplay() {
   return (
     <div className='container'>
       <div>
-      <h1>Boggle Solver</h1>
+      <h1>Wordhunt Solver</h1>
       </div>
       <div className='word-hunter-grid-container'>
 
