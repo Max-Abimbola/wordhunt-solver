@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../wordHunterDisplay.css';
 import FoundWords from '../components/FoundWords';
 import { utilGetNeighbours, utilCheckNeighbours, utilFilterNeighbours, wordInBoard } from '../helpers/wordhunter.cjs';
 
 function WordHunterDisplay() {
   const initialGrid = [
-    ["A", "N", "D", "S"],
-    ["S", "S", "S", "S"],
-    ["S", "S", "S", "S"],
-    ["S", "S", "S", "S"]
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""],
+    ["", "", "", ""]
   ];
 
   const [grid, setGrid] = useState(initialGrid);
-  const [fileContent, setFileContent] = useState('');
-  const [textArea, setTextArea] = useState('');
+  const [fileContent, setFileContent] = useState([]);
+  const [textArea, setTextArea] = useState([]);
+
+  const inputRefs = useRef(Array.from({ length: 16 }, () => React.createRef()));
 
   useEffect(() => {
     fetch('/src/helpers/word-list.txt')
       .then(response => response.text())
       .then(content => {
         const lines = content.split('\n');
-        var values = lines.map(line => line.trim());
+        const values = lines.map(line => line.trim());
         setFileContent(values);
       })
       .catch(error => {
@@ -32,22 +34,22 @@ function WordHunterDisplay() {
     const updatedGrid = [...grid];
     updatedGrid[rowIndex][colIndex] = value.toUpperCase();
     setGrid(updatedGrid);
+
+    const nextInputIndex = colIndex < 3 ? (rowIndex * 4) + (colIndex + 1) : (rowIndex + 1) * 4;
+    inputRefs.current[nextInputIndex].current.focus();
   };
 
   function handleClick() {
-    
-    var foundWords = fileContent.filter(word => wordInBoard(word, grid) === true);
+    const foundWords = fileContent.filter(word => wordInBoard(word, grid));
     setTextArea(foundWords);
-    console.log(foundWords);
   }
 
   return (
     <div className='container'>
       <div>
-      <h1>Wordhunt Solver</h1>
+        <h1>Wordhunt Solver</h1>
       </div>
       <div className='word-hunter-grid-container'>
-
         <form className='wordHunterGrid'>
           {grid.map((row, rowIndex) => (
             <div key={rowIndex}>
@@ -56,8 +58,9 @@ function WordHunterDisplay() {
                   key={`${rowIndex}-${colIndex}`}
                   type="text"
                   maxLength={1}
-                  value={`${grid[rowIndex][colIndex]}`}
+                  value={grid[rowIndex][colIndex]}
                   onChange={e => handleChange(rowIndex, colIndex, e.target.value)}
+                  ref={inputRefs.current[(rowIndex * 4) + colIndex]}
                 />
               ))}
             </div>
