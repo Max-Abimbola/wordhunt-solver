@@ -10,6 +10,7 @@
 
 }
 
+
 .wordHunterGrid input {
     margin:6px;
     height:100px;
@@ -22,10 +23,19 @@
     background-color:#FDF0AA ;
     text-align: center;
     text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
 
 
 }
 
+h1 {
+    background-color: #FDF0AA;
+    padding:10px;
+    position:absolute;
+    left:800px;
+    top:50px;
+    font-size: 50px;
+}
 
 
 .container {
@@ -76,8 +86,24 @@
     margin-left:10px;
     width:450px;
     height:50px;
-    background-color: #D4FCA2;
+    border:none;
+    border-color: #D4FCA2;
+    font-size: 2em;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.generate-words-button:hover {
+    margin-top:2px;
+    outline:none;
+    margin-left:10px;
+    width:450px;
+    height:50px;
+    background-color: #FDF0AA;
     border:none;
     font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    transition: ease-in-out 0.5s ;
 
 }

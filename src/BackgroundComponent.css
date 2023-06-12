@@ -24,12 +24,17 @@
 
   }
   .background li {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
     position: fixed;
-    display: block;
+
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #FDF0AA;
     animation: animate 19s linear infinite;
   }
   
@@ -37,6 +42,7 @@
   
   
   .background li:nth-child(0) {
+    
     left: 54%;
     width: 118px;
     height: 118px;

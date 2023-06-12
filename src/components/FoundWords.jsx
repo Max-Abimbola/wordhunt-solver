@@ -3,8 +3,7 @@ import { useState} from "react";
 import '../FoundWords.css'
 function FoundWords(props){
     return(
-            <textarea className='word-list'>
-                {props.words} 
+            <textarea readonly='yes' value={props.words} className='word-list'>
             </textarea>
     )
 }
