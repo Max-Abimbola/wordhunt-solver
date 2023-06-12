@@ -18,7 +18,7 @@ function WordHunterDisplay() {
   const inputRefs = useRef(Array.from({ length: 16 }, () => React.createRef()));
 
   useEffect(() => {
-    fetch('/src/components/word-list.txt')
+    fetch('/word-list.txt')
       .then(response => response.text())
       .then(content => {
         const lines = content.split('\n');
