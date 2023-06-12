@@ -1,25 +1,5 @@
 
-
-const fs = require('fs')
-
-const fileContent = fs.readFileSync('word-list.txt','utf-8')
-
-
-const lines = fileContent.split('\n')
-
-const values = lines.map((line)=>line.trim())
-
-console.log(values)
-
-
-const boardMatrix = [
-  ['A', 'K', 'N', 'M'],
-  ['S', 'P', 'T', 'G'],
-  ['I', 'N', 'W', 'S'],
-  ['O', 'T', 'D', 'A']
-];
-
-function utilGetNeighbours(boardMatrix, row, col) {
+export function utilGetNeighbours(boardMatrix, row, col) {
   const neighbours = [];
   const coords = [
     [0, 1],
@@ -48,8 +28,8 @@ function utilGetNeighbours(boardMatrix, row, col) {
   return neighbours;
 }
 
-function utilCheckNeighbours(row, col, word, boardMatrix, seenLetters) {
-  if (word.length === 0) {
+export function utilCheckNeighbours(row, col, word, boardMatrix, seenLetters, wordIndex = 0) {
+  if (wordIndex === word.length) {
     return true;
   } else {
     let neighbours = utilGetNeighbours(boardMatrix, row, col);
@@ -59,16 +39,14 @@ function utilCheckNeighbours(row, col, word, boardMatrix, seenLetters) {
       const neighbourRow = neighbours[i][0];
       const neighbourCol = neighbours[i][1];
 
-      if (boardMatrix[neighbourRow][neighbourCol] === word[0]) {
+      if (boardMatrix[neighbourRow][neighbourCol] === word[wordIndex]) {
+        const newSeenLetters = [...seenLetters];
         const seenLetter = [neighbourRow, neighbourCol];
-        seenLetters.push(seenLetter);
+        newSeenLetters.push(seenLetter);
 
-        word = word.slice(1);
-        if (utilCheckNeighbours(neighbourRow, neighbourCol, word, boardMatrix, seenLetters)) {
+        if (utilCheckNeighbours(neighbourRow, neighbourCol, word, boardMatrix, newSeenLetters, wordIndex + 1)) {
           return true;
         }
-        word = word.slice(-1) + word;
-        seenLetters.pop();
       }
     }
 
@@ -76,7 +54,7 @@ function utilCheckNeighbours(row, col, word, boardMatrix, seenLetters) {
   }
 }
 
-function utilFilterNeighbours(x, y) {
+export function utilFilterNeighbours(x, y) {
   for (let i = 0; i < y.length; i++) {
     for (let j = 0; j < x.length; j++) {
       if (x[j][0] === y[i][0] && x[j][1] === y[i][1]) {
@@ -88,7 +66,7 @@ function utilFilterNeighbours(x, y) {
   return x;
 }
 
-function wordInBoard(word) {
+export function wordInBoard(word,boardMatrix) {
   for (let row = 0; row < boardMatrix.length; row++) {
     for (let col = 0; col < boardMatrix[0].length; col++) {
       if (boardMatrix[row][col] === word[0]) {
@@ -101,7 +79,7 @@ function wordInBoard(word) {
   return false;
 }
 
-
+/* 
 let presentWords = values.filter((word)=>wordInBoard(word) === true)
 
 
@@ -109,4 +87,5 @@ x = ['ABACTINAL','ABAFT']
 
 y = x.filter((word)=>wordInBoard(word) === true)
 
-console.log(presentWords)
+console.log(presentWords) */
+
